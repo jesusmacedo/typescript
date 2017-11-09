@@ -22,7 +22,7 @@ let myGFsName: string = 'Luisa';
 
 // explicit number
 let myGFsAge: number;
-myGFsAge = 24;
+myGFsAge = 24.2;
 //myGFsAge = '24';// error: type '24' is not assignable to type 'number'.
 
 // explicit boolean
@@ -61,3 +61,32 @@ let car: any = 'BMW';
 console.log(car); // BMW
 car = { brand: 'BMW', series: 666 };
 console.log(car);// { brand: 'BMW', series: 666 }
+
+console.clear();
+
+// functions
+// - functionName() : returnType
+function returnMyName(): string {
+	return myName;
+}
+console.log(returnMyName());
+
+// functions returning void
+function sayHello(): void {
+	console.log('Hello', myGFsName);
+}
+sayHello();
+
+// functions with args
+function calculateAgeDifference(hers: number, mine: number): number {
+	return mine - hers;
+}
+console.log(calculateAgeDifference(myGFsAge, myAge));
+//console.log(calculateAgeDifference('24', myAge));// error: type '"24"' is not assignable to type 'number'
+
+// functions as types
+// specify what type of functions can be assigned to this variable: (a: number, b: number) => number
+let calculate: (a: number, b: number) => number;
+calculate = calculateAgeDifference;
+//calculate = sayHello;// error: type '() => void' is not assignable to the type '(a: number, b: number) => number'
+console.log(calculate(24, 27));
