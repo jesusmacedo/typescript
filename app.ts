@@ -103,10 +103,34 @@ let user: { name: string, age: number } = {
 //	b: 24
 //};// error: type '{ a: string, b: number }' is not assignable to type { name: string, age: number }
 
+// type alias
+// for defining an object structure without creating a class
+type Complex = { data: number[], output: (all: boolean) => number[] };
+
 // complex objects
-let complex: { data: number[], output: (all: boolean) => number[] } = {
+let complex: Complex = {
 	data: [100, 3.99, 24],
 	output: function (all: boolean): number[] {
 		return this.data
 	}
 };
+// using the type defined before, it is easier to reuse the object definition or even modify it
+let complex2: Complex = {
+	data: [69, 13, 27],
+	output: function (all: boolean): number[] {
+		return this.data
+	}
+};
+
+// union types
+// the value can be number OR string, there can be more types in the chain
+let myRealAge: number | string = 27;
+myRealAge = '27';
+//myRealAge = true;// error: type 'true' is not assignable to type 'number | string'
+
+// check for types
+let theNumber = 666;
+
+if (typeof theNumber == 'number') {
+	console.log('This is a number :3');
+}
