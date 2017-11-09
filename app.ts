@@ -90,3 +90,23 @@ let calculate: (a: number, b: number) => number;
 calculate = calculateAgeDifference;
 //calculate = sayHello;// error: type '() => void' is not assignable to the type '(a: number, b: number) => number'
 console.log(calculate(24, 27));
+
+// typed objects
+let user: { name: string, age: number } = {
+	name: 'Jesus',
+	age: 27
+};
+//user = {};// error: type '{}' is not assignable to type { name: string, age: number }
+// property names are important, they cannot be changed like this:
+//user = {
+//	a: 'Luisa',
+//	b: 24
+//};// error: type '{ a: string, b: number }' is not assignable to type { name: string, age: number }
+
+// complex objects
+let complex: { data: number[], output: (all: boolean) => number[] } = {
+	data: [100, 3.99, 24],
+	output: function (all: boolean): number[] {
+		return this.data
+	}
+};
